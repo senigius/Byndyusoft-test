@@ -12,15 +12,9 @@ import {
 export const getSumOfTwoMinNumbers = (arr = []) => {
   if (arr.length === 0) return null;
 
-  /* если честно, я боюсь представить, что на фронт приходит массив
-  из ста миллионов элементов, даже пара десятков тысяч это уже серьезное
-  испытание для приложения и архитектуры.
-  Данная ф-я не идеальна, но всегда есть куда расти */
-  const firstMinNum = Math.min(...arr);
-  const newArr = arr.filter((_num, index) => index !== arr.indexOf(firstMinNum));
-  const secondMinNum = Math.min(...newArr);
+  const newArr = [...arr].sort();
 
-  return firstMinNum + secondMinNum;
+  return newArr[0] + newArr[1];
 };
 
 const App = () => {
